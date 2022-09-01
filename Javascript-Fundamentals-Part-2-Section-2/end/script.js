@@ -192,11 +192,170 @@
 // console.log(friends)
 // console.log(friends.pop())
 
+// const friends = [
+//     "Ayo",
+//     "Babatunde",
+//     "Ciroma",
+//   ];
 
-const friends = [
-    "Ayo",
-    "Babatunde",
-    "Ciroma",
-  ];
-  
-const status = friends.includes("babatunde")
+// const status = friends.includes("babatunde")
+// const person1 = {
+//   firstName: "Ciroma",
+//   lastName: "Adekunle",
+//   birthYear: 1996,
+//   job: "Teacher",
+//   complexion: "Fair",
+//   interest: "Playing video games",
+//   friends: ["ciroma", " dumebi", " adekunle"],
+//   calcAge: function () {
+//     this.age = 2022 -this.birthYear
+//     return this.age;
+//   },
+//   hasDriverLicense: false,
+//   getSummary : function(){
+//     console.log(`${this.firstName} is a ${this.calcAge()} year old ${this.job} and he has ${this.hasDriverLicense? "a" : "no"} driver's license `)
+//   }
+// };
+
+// person1.getSummary();
+
+// console.log(person1.calcAge());
+// console.log(person1["calcAge"]());
+// console.log(person1["calcAge"]());
+// console.log(person1["calcAge"]());
+
+// console.log(person1.friends);
+
+// console.log(person1["age"])
+// console.log(person1.age)
+
+// const lastWord = "Name";
+// console.log(person1["first" + lastWord])
+// const interest = prompt(
+//   "What are you interested in, firstName, lastName, age, job, complexion"
+// );
+// if(person1[interest]){
+//   console.log(person1[interest])
+// }else{
+//   console.log(`Wrong request,choose between  firstName, lastName, age, job, complexion `)
+// }
+// console.log(
+//   `${person1["firstName"]} has ${person1.friends.length} friends and his best friend is${person1.friends[1]}`
+// );
+
+//CODING CHALLENGE
+// const person1 = {
+//   firstName: "Ciroma",
+//   lastName: "Adekunle",
+//   height: 2,
+//   mass: 85,
+//   calcBMI: function () {
+//     this.BMI = this.mass / this.height ** 2;
+//     return this.BMI;
+//   },
+// };
+// const person2 = {
+//   firstName: "Dumebi",
+//   lastName: "Katrina",
+//   height: 2,
+//   mass: 80,
+//   calcBMI: function () {
+//     this.BMI = this.mass / this.height ** 2;
+//     return this.BMI;
+//   },
+// };
+// if (person2.calcBMI() > person1.calcBMI()) {
+//   console.log(
+//     `${person2.firstName}'s BMI (${person2.calcBMI()}) is greater than ${
+//       person1.firstName
+//     }'s BMI (${person1.calcBMI()})`
+//   );
+// } else {
+//   console.log(
+//     `${person1.firstName}'s BMI (${person1.calcBMI()}) is greater than ${
+//       person2.firstName
+//     }'s BMI (${person2.calcBMI()})`
+//   );
+// }
+
+// for(const rep = 1; rep <=10; rep++){
+//   // console.log(`Lifting weights repitition ${rep}`)
+// }
+
+// const arr = [
+//   "Ayo",
+//   "Ciroma",
+//   "Dumebi",
+//   100,
+//   true,
+//   ["Afro", "AfroFusion", "Rock"]
+// ]
+// const types = []
+// for(let i = 0; i<arr.length; i++ ){
+//   // console.log(arr[i], typeof arr[i])
+//   // types[i] = typeof arr[i]
+//   types.unshift(typeof arr[i])
+// }
+// console.log(types)
+
+// console.log(5%2)
+
+// for(let i = 0; i<=100; i++){
+//   if(i % 2 !== 0){
+//     console.log(i)
+//   }
+// }
+// const arr = [
+//   "Ayo",
+//  "Ciroma",
+//   "Dumebi",
+//   100,
+//   true,
+//   ["Afro", "AfroFusion", "Rock"],
+//   "Dumeb",
+// ];
+// for (let i = 0; i < arr.length; i++) {
+//   if (typeof arr[i] !== "string") {
+//     break;
+//   }
+// console.log(arr[i], typeof arr[i]);
+// }
+
+// let counter = 1;
+// while (counter <= 10) {
+//   console.log(counter);
+//   counter++;
+// }
+let random = Math.round(Math.random() * 6);
+while(random !== 6){
+  console.log(`you rolled ${random}`)
+ random = Math.round(Math.random() * 6);
+
+}
+
+
+/*
+Let's improve Ciroma's tip calculator even more, this time using loops!
+
+1. Create an array 'bills' containing all 10 test bill values
+2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate tips and total values (bill + tip) for every bill value in the bills array. Use a for loop to perform the 10 calculations!
+
+TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+
+HINT: Call calcTip in the loop and use the push method to add values to the tips and totals arrays 😉
+
+4. BONUS: Write a function 'calcAverage' which takes an array called 'arr' as an argument. This function calculates the average of all numbers in the given array. This is a DIFFICULT challenge (we haven't done this before)! Here is how to solve it:
+  4.1. First, you will need to add up all values in the array. To do the addition, start by creating a variable 'sum' that starts at 0. Then loop over the array using a for loop. In each iteration, add the current value to the 'sum' variable. This way, by the end of the loop, you have all values added together
+  4.2. To calculate the average, divide the sum you calculated before by the length of the array (because that's the number of elements)
+  4.3. Call the function with the 'totals' array
+
+GOOD LUCK 😀
+*/
+let arrayOfBills = [22, 295, 176, 440, 37, 105, 10, 1100, 86 , 52]
+let tips = [];
+let totals= [];
+
+for (let i = 0; i <= arrayOfBills.length; i++){
+fu
+}
