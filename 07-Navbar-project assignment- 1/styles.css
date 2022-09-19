@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -7,8 +7,8 @@ body {
   line-height: 2.2;
   font-size: 0.875rem;
 }
-h1{
-  font-family: 'Sacramento', cursive;
+h1 {
+  font-family: "Sacramento", cursive;
   font-size: 2rem;
   margin: 0;
   padding: 0;
@@ -66,7 +66,26 @@ nav {
   justify-content: space-between;
   padding: 1rem;
 }
-
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fade-out{
+  animation: fade-out 5s forwards;
+}
+@keyframes fade-out {
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 @media (min-width: 800px) {
   .nav-main {
     max-width: 1170px;
