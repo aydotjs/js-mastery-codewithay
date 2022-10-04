@@ -216,12 +216,38 @@
 // console.log("age==>", age);
 // console.log("oldAge==>", oldAge);
 
-let person1 = {
-  firstName : "Ciroma",
-  age : 20
-}
-let person2 = person1;
-person2.age = 23;
-person2.job = "Prog"
-console.log(person1)
-console.log(person2)
+// let person1 = {
+//   firstName : "Ciroma",
+//   age : 20
+// }
+// let person2 = person1;
+// person2.age = 23;
+// person2.job = "Prog"
+// console.log(person1)
+// console.log(person2)
+//Primitive Types
+// let lastName = "Ciroma"
+// let oldLastName = lastName;
+// lastName = "Adekunle"
+// console.log(lastName)
+//Reference Types
+// const jessica = {
+//   firstName: "Jessica",
+//   lastName: "Ciroma",
+//   age: 27,
+// };
+
+// const marriedJessica = jessica;
+// marriedJessica.lastName = "Adekunle";
+// console.log("before marriage =>", jessica);
+// console.log("after marriage =>", marriedJessica);
+
+//Copying objects
+const dumebi = {
+  firstName: "Kate",
+  lastName: "Dumebi",
+  age: 20,
+};
+let dumebiCopy = Object.assign({gender: "male"}, dumebi);
+dumebiCopy.age = 30
+console.log(dumebiCopy)
