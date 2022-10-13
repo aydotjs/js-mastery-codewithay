@@ -21,9 +21,10 @@ img {
 
 .carousel {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  height: 530px;
+  height: auto;
   width: 500px;
   overflow: hidden;
+
 }
 
 .image-container {
