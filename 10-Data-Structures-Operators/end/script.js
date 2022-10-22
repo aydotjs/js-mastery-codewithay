@@ -1,6 +1,6 @@
 'use strict';
-const days = ['mon', "tue", "wed", "thu", "fri", "sat", "sun"]
-const openingHours =  {
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
   [days[3]]: {
     open: 12,
     close: 22,
@@ -27,13 +27,13 @@ const restaurant = {
   },
   openingHours,
   //{mainIndex, time, address, starterIndex }
-  orderDelivery (obj) {
+  orderDelivery(obj) {
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
     return obj;
   },
-  orderSoup (ing1, ing2, ing3) {
+  orderSoup(ing1, ing2, ing3) {
     console.log(
       `Here is your delicious soup which contains ${ing1}, ${ing2}, ${ing3}`
     );
@@ -43,12 +43,194 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+//WORKING WITH STRINGS
+// console.log(networkProvider[0])
+// console.log(networkProvider[1])
+// console.log("MTN NIGERIA LTD"[0])
+// console.log("MTN NIGERIA LTD"[5])
+// console.log(networkProvider.length)
+// console.log("MTN NIGERIA LTD".length)
 
-const obj = {
-  firstName : "Ayo"
-}
-let lastName = "firstName"
-console.log()
+// console.log(networkProvider.indexOf("N"))
+// console.log(networkProvider.indexOf("Ltd"))
+// const substring =  networkProvider.slice(2,);
+// console.log(substring)
+// console.log(networkProvider.slice(3, ))
+
+// const myName = "ciroma"
+// const blockName = myName.toUpperCase()
+// console.log(blockName.toLowerCase())
+
+const networkProvider = 'MTN NIGERIA LTD';
+const sentence = 'I stopped using GLO, because GLO frustrates me';
+console.log(networkProvider);
+//string methods returning boolean values
+// const question = prompt("What Network do you use(MTN, AIRTEL, GLO").toUpperCase()
+// if(question.includes("MTN")){
+//   console.log("Good network")
+// }else if(question.includes("AIRTEL")){
+//   console.log("Good network")
+// }
+// else{
+//   console.log("Not good enough")
+// }
+// console.log(networkProvider.includes(""))
+// console.log(networkProvider.startsWith("MT"))
+// console.log(networkProvider.endsWith("D"))
+// console.log(networkProvider.includes("NIGERIA"))
+
+//SPLIT METHOD
+// console.log("a+very+nice+string".split("+"))
+// const[firstName, lastName] = "Ayobami Owoeye".split(" ")
+// const newName  = ["Mr.", firstName, lastName.toUpperCase()].join("**")
+// console.log(newName)
+// REPLACE AND REPLACEALL METHOD
+// const newNetworkPro = networkProvider.replace("MTN", "SMILE")
+// // console.log(newNetworkPro)
+// console.log(sentence.replaceAll("GLO", "AIRTEL"))
+
+//STRING PADDING
+// const message = "Hello";
+// console.log(message.padStart(6, "*").padEnd(10,"*"))
+
+const maskedCard = function (cardNumber) {
+const cardNumStr = String(cardNumber);
+const lastNum = cardNumStr.slice(-4);
+const visibleNum = lastNum.padStart(cardNumStr.length,"*" )
+console.log(visibleNum)
+};
+
+
+maskedCard(345268885432566);
+maskedCard(345268567893);
+maskedCard(3452887);
+maskedCard(345268);
+//WHICH DATA STRUCTURE TO USE
+//MAPS ITERATION
+// const questions = new Map([
+//   ['question', 'What is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'Dart'],
+//   [4, 'Javascript'],
+//   [true, 'Correct'],
+//   [false, 'Try Again'],
+//   ['correct', 4],
+// ]);
+// console.log(questions.get('question'));
+// for (const [key, value] of questions) {
+//   if (typeof key === 'number') {
+//     console.log(`${key} : ${value}`);
+//   }
+// }
+// const answer = Number(prompt('What is your answer'));
+// console.log(answer);
+// console.log(questions.get(questions.get('correct') === answer));
+
+// console.log([...questions])
+
+// console.log(questions.get("correct")=== answer)
+
+// if (answer === questions.get('correct')) {
+//   console.log(questions.get(true));
+// } else {
+//   console.log(questions.get(false));
+// }
+// console.log(Object.entries(openingHours))
+// const hoursMap = new Map(Object.entries(openingHours))
+// console.log(hoursMap)
+
+//MAPS FUNDAMENTALS
+// const arr = [1,2]
+// const canteen = new Map();
+// canteen.set('name', 'New Age Canteen');
+// canteen.set(1, 'Awka, Anambra');
+// canteen.set(2, 'Bodija, Oyo');
+// canteen
+//   .set('categories', ['Swallow', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 22)
+//   .set(true, 'We are opened')
+//   .set(false, 'We are closed')
+//   .set(arr, 'Testing');
+
+//   console.log(canteen.get(arr))
+// // console.log(canteen.has("menu"))
+// canteen.delete(2);
+// // canteen.clear()
+// console.log(canteen);
+// const time = 8;
+// console.log(
+//   canteen.get(time > canteen.get('open') && time < canteen.get('close'))
+// );
+
+// console.log(canteen.get("name"))
+// console.log(canteen.get(2))
+// console.log(canteen.get(true))
+
+// console.log(canteen)
+//SETS
+// const arr = [1, 2];
+
+// const orderSet = new Set([
+//   'garri',
+//   'garri',
+//   'Maize',
+//   'Chicken',
+//   'Maize',
+//   'bread',
+// ]);
+
+// console.log(orderSet.size)
+// console.log(orderSet.has("garri"))
+// orderSet.add("Plantain Chips")
+// orderSet.delete("Plantain Chips")
+// // orderSet.clear()
+// console.log(orderSet)
+// for(const food of orderSet){
+// console.log(food)
+
+// const staff = ["Waiter", "Waiter", "Gateman", "Chef", "Chef", "Manager"]
+// const staffUnique = new Set (staff)
+// console.log(staffUnique.size)
+
+// console.log(staffUnique)
+// console.log(new Set("Ayobami").size)
+//LOOPING OBJECTS
+// const properties = Object.keys(openingHours)
+
+// for(const day of properties){
+//  const str = `we are open on : ${day}`
+//  console.log(str)
+// }
+
+// const values = Object.values(openingHours)
+// console.log(values)
+
+// const entries = Object.entries(openingHours)
+// for(const [day, {open, close}] of entries){
+//  console.log(`On ${day}, we are open at ${open}, we close at ${close}`)
+// }
+
+// const users = [{
+//   name : "Kate"
+// }];
+// console.log(users[0]?.email ?? 'User array empty');
+
+// if (users.length > 0) {
+//   console.log(users[0].name);
+// } else {
+//   console.log('User array empty');
+// }
+
+// console.log(restaurant.order?.(0,1) ?? "Method does not exist")
+// console.log(restaurant.orderRice?.(0,1) ?? "Method does not exist")
+
+// const obj = {
+//   firstName : "Ayo"
+// }
+// let lastName = "firstName"
+// console.log()
 
 //OPTIONAL CHAINING
 // for(const day of days){
@@ -56,16 +238,15 @@ console.log()
 //  const open =  restaurant.openingHours[day]?.open ?? "closed"
 //  console.log(`On ${day}, we are open at ${open}`)
 // }
-  // console.log(restaurant.openingHours.mon.open)// with opt chaining
+// console.log(restaurant.openingHours.mon.open)// with opt chaining
 //  const x = restaurant.openingHours.mon.open;
 
 // console.log(x)
-  // if(restaurant.openingHours.mon){
-  //   console.log(restaurant.openingHours.mon.open)
-  // }else{
-  //   console.log(undefined)
-  // }
-
+// if(restaurant.openingHours.mon){
+//   console.log(restaurant.openingHours.mon.open)
+// }else{
+//   console.log(undefined)
+// }
 
 // console.log(restaurant)
 //FOR OF LOOP
@@ -75,15 +256,11 @@ console.log()
 //   console.log(`${index + 1} : ${element}`)
 // }
 
-
 // for(let i = 0; i < menu.length; i++) {
 //   console.log(`${i}: ${menu[i]}`);
 // }
 
 //ENHANCED OBJECT LITERAL
-
-
-
 
 //LOGICAL ASSIGNMENT OPERATORS
 const rest1 = {
@@ -326,6 +503,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 
 GOOD LUCK 😀
 */
+//
 
 const game = {
   team1: 'Bayern Munich',
@@ -369,7 +547,31 @@ const game = {
   printGoals: function (...goalScorers) {
     // console.log(`${goalScorers.length} goal(s) were scored`)
   },
+  avgOdd: function ({ team1, x, team2 }) {
+    const oddsArr = [];
+  },
 };
+// game.avgOdd({...game.odds})
+//1
+// for (const [goalNumber, player] of game.scored.entries()) {
+//   console.log(`Goal ${goalNumber + 1} : ${player}`);
+// }
+//2
+// let average = 0;
+// const odds =  Object.values(game.odds)
+// for (const odd of odds) {
+//   average += odd;
+//   average /= odds.length
+// }
+// console.log(average);
+//3
+// for(const [team, odd] of Object.entries(game.odds)){
+//   const teamString = team === "x" ? "draw" : `victory ${game[team]}`
+//   console.log(`odd of ${teamString} ${odd}`)
+// }
+// Odd of victory Bayern Munich: 1.33
+// Odd of draw: 3.25
+// Odd of victory Borrussia Dortmund: 6.5
 
 //CODING CHALLENGE
 const [players1, players2] = game.players;
@@ -395,3 +597,17 @@ game.printGoals('Thiago');
 
 // team1 < team2 && console.log("Team 1 is more likely to win");
 // team1 > team2 && console.log("Team 2 is moe likely to win")
+// Coding Challenge #3
+
+// WEEK-18-ASSIGNMENT 
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
