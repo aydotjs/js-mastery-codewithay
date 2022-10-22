@@ -94,11 +94,12 @@ console.log(networkProvider);
 // console.log(message.padStart(6, "*").padEnd(10,"*"))
 
 const maskedCard = function (cardNumber) {
-  const cardNumStr = String(cardNumber);
-  const lastNum = cardNumStr.slice(-4);
-  const visibleNum = lastNum.padStart(cardNumStr.length, '*');
-  console.log(visibleNum);
+const cardNumStr = String(cardNumber);
+const lastNum = cardNumStr.slice(-4);
+const visibleNum = lastNum.padStart(cardNumStr.length,"*" )
+console.log(visibleNum)
 };
+
 
 maskedCard(345268885432566);
 maskedCard(345268567893);
@@ -598,7 +599,7 @@ game.printGoals('Thiago');
 // team1 > team2 && console.log("Team 2 is moe likely to win")
 // Coding Challenge #3
 
-// WEEK-18-ASSIGNMENT -1
+// WEEK-18-ASSIGNMENT 
 /* 
 Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
@@ -609,25 +610,4 @@ Let's continue with our football betting app! This time, we have a map with a lo
       [FIRST HALF] 17: ⚽️ GOAL
 
 GOOD LUCK 😀
-*/ const gameEvents = new Map([
-  [17, '⚽️ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽️ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽️ GOAL'],
-  [80, '⚽️ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
-// WEEK-18-ASSIGNMENT - 2
-/*
-Create a function that takes  string / sentence as an argument and returns the longest word word in that string/sentence
-
-Test Data
-longestWord("Javascript is a versatile programming language")//programming is returned because programming is the longest word
-longestWord("variables in the temporal dead zone are inaccessible")// inaccessible is returned because inaccessible is the longest word
-
 */
