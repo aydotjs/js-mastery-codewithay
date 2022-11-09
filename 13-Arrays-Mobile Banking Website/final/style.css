@@ -24,6 +24,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+
 }
 
 .welcome {
@@ -88,6 +89,7 @@ nav {
   grid-template-columns: 4fr 3fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
   gap: 2rem;
+ 
 
   /* NOTE This creates the fade in/out anumation */
   /* opacity: 0; */
@@ -100,6 +102,7 @@ nav {
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 2rem;
+
 }
 
 .balance__label {
@@ -124,6 +127,7 @@ nav {
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
+
 }
 
 .movements__row {
@@ -131,6 +135,7 @@ nav {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eee;
+
 }
 
 .movements__type {
