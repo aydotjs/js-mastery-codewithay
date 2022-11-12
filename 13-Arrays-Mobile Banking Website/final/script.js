@@ -65,9 +65,9 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
-
+//DISPLAYING MOVEMENT
 const displayMovement = function (movements) {
-  containerMovements.innerHTML = '';
+  // containerMovements.innerHTML = '';
   movements.forEach(function (movement, index) {
     const typeofMov = movement < 0 ? 'withdrawal' : 'deposit';
     const htmlElement = `<div class="movements__row">
@@ -93,6 +93,40 @@ const createUserName = function (userAccounts) {
   });
 };
 createUserName(accounts);
+//DISPLAYING BALANCE
+const displayBalance = function (movements) {
+  const balance = movements.reduce((acc, move, index, arr) => acc + move, 0);
+  labelBalance.textContent = `${balance} NGN`;
+};
+displayBalance(account1.movements);
+//COMPUTING TRANSACTION SUMMARY
+const computeSummary = function (movements) {
+  const income = movements
+    .filter(move => move > 0)
+    .reduce((acc, move) => acc + move, 0);
+  labelSumIn.textContent = `${income} NGN`;
+  const withdrawals = movements
+    .filter(move => move < 0)
+    .reduce((acc, move) => acc + move, 0);
+  labelSumOut.textContent = `${Math.abs(withdrawals)} NGN`;
+  const interest = movements
+    .filter(move => move > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(move => move >= 1)
+    .reduce((acc, mov, i, arr) => {
+      return acc + mov;
+    }, 0);
+  labelSumInterest.textContent = `${interest} NGN`;
+};
+computeSummary(account1.movements);
+// labelBalance.textContent = account1.movements.reduce(function (
+//   accumulator,
+//   elem,
+//   index
+// ) {
+//   return `${accumulator + elem} NGN`;
+// },
+// 0);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -268,11 +302,43 @@ GOOD LUCK 😀
 
 //REDUCE
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-console.log(movements)
-const balance = movements.reduce(function(acc,move,index,arr){
-  console.log(`Iteration ${index} : ${acc}`)
-  return acc + move
-}, 0)
-console.log(balance)
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
+// const balance = movements.reduce(function (acc, move, index, arr) {
+//   console.log(`Iteration ${index} : ${acc}`);
+//   return acc + move;
+// }, 0);
+// console.log(balance);
 
+// let newBalance = 0;
+// for (const x of movements) {
+//   newBalance += x;
+// }
+// console.log(newBalance);
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const usdToNgn = 850;
+// const conversion = movements
+//   .filter(mov => mov > 0)
+//   .map((mov, i, arr) => {
+//     console.log(arr);
+//     return mov * usdToNgn;
+//   })
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(conversion);
+
+//WEEK 22 ASSIGNMENT
+/* 
+Let's go back to Ciroma and Kate's study about dogs. This time, they want to convert dog ages to human ages and calculate the average age of the dogs in their study.
+
+Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and does the following things in order:
+
+1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years old, humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4.
+2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that are at least 18 years old)
+3. Calculate the average human age of all adult dogs (you should already know from other challenges how we calculate averages 😉)
+4. Run the function for both test datasets
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
