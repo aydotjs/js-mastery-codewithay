@@ -116,7 +116,6 @@ const displayMovement = function (currentAccount, sort = false) {
   const sortedMovements = sort
     ? currentAccount.movements.slice().sort((a, b) => b - a)
     : currentAccount.movements;
-  console.log(currentAccount);
 
   sortedMovements.forEach(function (movement, index) {
     const dateStore = new Date(currentAccount.movementsDates[index]);
@@ -198,34 +197,41 @@ const computeSummary = function (account) {
   labelSumInterest.textContent = `${interest.toFixed(2)} NGN`;
 };
 //UPDATING UI
-const updateUI = function () {
+const updateUI = function (currentAccount) {
   displayMovement(currentAccount);
   displayBalance(currentAccount);
   computeSummary(currentAccount);
 };
-const startLogIutTimer = function () {
+let timer;
+const startLogOutTimer = function () {
+  //set time to 10seconds
   let time = 300;
-  const tick = () => {
+  //call the timer every 1s
+  const tickTime = () => {
+    //each call deduct 1s, print the remaining UI
     const min = `${Math.trunc(time / 60)}`.padStart(2, 0);
     const sec = `${time % 60}`.padStart(2, 0);
-
-    //in each call, print the remaining time to the UI
     labelTimer.textContent = `${min}:${sec}`;
-    time--;
-
     if (time === 0) {
       clearInterval(timer);
-      labelWelcome.textContent = `Login to get started`;
       containerApp.style.opacity = 0;
+      labelWelcome.textContent = `Login to get started`;
     }
+    time--;
+    btnLoan.addEventListener('click', function () {
+      time = 300;
+    });
+    btnTransfer.addEventListener('click', function () {
+      time = 300;
+    });
   };
-  tick();
-  //call the timer every second
-  const timer = setInterval(tick, 1000);
-
-  //when  0 seconds stop timer and log user out
+  tickTime();
+  timer = setInterval(tickTime, 1000);
+  return timer;
 };
-
+// const resetTimer = function(){
+//   time = 30;
+// }
 //IMPLEMENTING LOGIN
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
@@ -254,8 +260,11 @@ btnLogin.addEventListener('click', function (e) {
     hour: 'numeric',
     minute: 'numeric',
   }).format(new Date());
-  startLogIutTimer();
-  updateUI();
+  if (timer) {
+    clearInterval(timer);
+  }
+  startLogOutTimer();
+  updateUI(currentAccount);
 });
 
 //IMPLEMENTING TRANSFER
@@ -280,16 +289,21 @@ btnTransfer.addEventListener('click', function (e) {
   inputTransferTo.value = '';
   updateUI();
 });
-
+//IMPLEMENTING LOAN
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = +inputLoanAmount.value;
-  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    currentAccount.movements.push(amount);
-    currentAccount.movementsDates.push(new Date().toISOString());
-    updateUI();
-    inputLoanAmount.value = '';
-  }
+  inputLoanAmount.value = '';
+  setTimeout(() => {
+    if (
+      amount > 0 &&
+      currentAccount.movements.some(mov => mov >= amount * 0.1)
+    ) {
+      currentAccount.movements.push(amount);
+      currentAccount.movementsDates.push(new Date().toISOString());
+      updateUI();
+    }
+  }, 10000);
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -450,15 +464,21 @@ console.log(date4);
 //1)settimeout
 //2)setiinterval
 const ings = ['rice', 'beans'];
-const omoElewa = setTimeout(
-  (ing1, ing2) => {
-    console.log(`yay, my ${ing1} and ${ing2} is here`);
-  },
-  5000,
-  ...ings
-);
+// const omoElewa = setTimeout(
+//   (ing1, ing2) => {
+//     console.log(`yay, my ${ing1} and ${ing2} is here`);
+//   },
+//   5000,
+//   ...ings
+// );
 
-if (ings.includes('beans')) {
-  clearTimeout();
-}
-console.log('waiting....');
+// if (ings.includes('beans')) {
+//   clearTimeout(omoElewa);
+// }
+// console.log('waiting....');
+
+// const timer = setInterval(()=>{console.log('2s just passed');
+// }, 2000)
+
+// clearInterval(timer)
+
