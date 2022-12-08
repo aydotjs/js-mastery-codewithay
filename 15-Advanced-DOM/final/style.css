@@ -37,7 +37,6 @@ body {
 .section {
   padding: 15rem 3rem;
   border-top: 1px solid #ddd;
-
   transition: transform 1s, opacity 1s;
 }
 
@@ -122,6 +121,7 @@ img {
   width: 100%;
   padding: 0 6rem;
   z-index: 100;
+  /* border: 2px solid green; */
 }
 
 /* nav and stickly class at the same time */
@@ -139,6 +139,10 @@ img {
   display: flex;
   align-items: center;
   list-style: none;
+  /* border: 2px solid blue; */
+}
+.nav__link{
+  /* border: 2px solid black; */
 }
 
 .nav__item {
@@ -671,4 +675,12 @@ h4 {
   color: #bbb;
   font-size: 1.5rem;
   font-weight: 400;
+}
+.btn--close-cookie{
+  background-color: red;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
 }
