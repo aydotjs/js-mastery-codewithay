@@ -43,13 +43,67 @@ btnScrollTo.addEventListener('click', function () {
 // });
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
-  console.log(e.target);
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+//IMPLEMENTING TABBED COMPONENT
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+tabsContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('operations__tab')) {
+    tabs.forEach(el => {
+      el.classList.remove('operations__tab--active');
+    });
+    tabsContent.forEach(el => {
+      console.log(el);
+      el.classList.remove('operations__content--active');
+    });
+    e.target.classList.add('operations__tab--active');
+    console.log(e.target.dataset.tab);
+    document
+      .querySelector(`.operations__content--${e.target.dataset.tab}`)
+      .classList.add('operations__content--active');
+    //
+  }
+});
 
+//IMPLEMENTING THE FADE OUT FEATURE
+const handleHover = function (e, opacity) {
+  if (e.target.classList.contains('nav__link')) {
+    console.log(e.target);
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+    siblings.forEach(el => {
+      if (link !== el) {
+        el.style.opacity = opacity;
+      }
+      logo.style.opacity = opacity;
+    });
+  }
+};
+const nav = document.querySelector('nav');
+nav.addEventListener('mouseover', function (e) {
+  handleHover(e, 0.5);
+});
+nav.addEventListener('mouseout', function (e) {
+  handleHover(e, 1);
+});
+const obsOptions = {
+  root : null,
+  threshold : 0.1
+};
+const obsCallBack = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
+
+const observer = new IntersectionObserver(obsCallBack, obsOptions);
+observer.observe(section1);
 //SELECTING ELEMENTS
 // const section = document.querySelector('.section');
 // // const allSections = document.querySelectorAll(".section")

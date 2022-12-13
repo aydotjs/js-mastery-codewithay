@@ -284,6 +284,7 @@ h4 {
 .operations__tab-container {
   display: flex;
   justify-content: center;
+  border: 2px solid red;
 }
 
 .operations__tab {
@@ -525,6 +526,9 @@ h4 {
 
 .section__title--testimonials {
   margin-bottom: 4rem;
+}
+#section--1{
+  border: 2px solid red;
 }
 
 /* SIGNUP */
