@@ -4,6 +4,10 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const nav = document.querySelector('nav');
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+const imageTargets = document.querySelectorAll('img[data-src]');
 ///////////////////////////////////////
 // Modal window
 const openModal = function () {
@@ -62,7 +66,7 @@ tabsContainer.addEventListener('click', function (e) {
       el.classList.remove('operations__content--active');
     });
     e.target.classList.add('operations__tab--active');
-    console.log(e.target.dataset.tab);
+    // console.log(e.target.dataset.tab);
     document
       .querySelector(`.operations__content--${e.target.dataset.tab}`)
       .classList.add('operations__content--active');
@@ -85,25 +89,73 @@ const handleHover = function (e, opacity) {
     });
   }
 };
-const nav = document.querySelector('nav');
+
 nav.addEventListener('mouseover', function (e) {
   handleHover(e, 0.5);
 });
 nav.addEventListener('mouseout', function (e) {
   handleHover(e, 1);
 });
-const obsOptions = {
-  root : null,
-  threshold : 0.1
+//IMPLEMENTING STICKY NAVIGATION
+const callBackFn = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
 };
-const obsCallBack = function (entries, observer) {
-  entries.forEach(entry => {
-    console.log(entry);
+const observerOptions = {
+  root: null,
+  threshold: 0.2,
+};
+const observer = new IntersectionObserver(callBackFn, observerOptions);
+observer.observe(section1);
+const ObserverFn = function (entries, headerObserver) {
+  const [entry] = entries;
+  if (entry.isIntersecting === false) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+};
+const observerObj = {
+  root: null,
+  threshold: 0,
+  rootMargin: '-90px',
+};
+const headerObserver = new IntersectionObserver(ObserverFn, observerObj);
+headerObserver.observe(header);
+//IMPLEMENTING REVEALING SECTIONS
+const obsFn = function (entries, obsOpt) {
+  const [entry] = entries;
+  console.log(entry);
+  if (entry.isIntersecting) {
+    entry.target.classList.remove('section--hidden');
+  }
+};
+const obsOpt = {
+  root: null,
+  threshold: 0.15,
+};
+const observerSection = new IntersectionObserver(obsFn, obsOpt);
+allSections.forEach(section => {
+  section.classList.add('section--hidden');
+  observerSection.observe(section);
+});
+
+//IMPLEMENTING LAZY LOADING IMAGES
+const loadingImg = function (entries, imgObserver) {
+  const [entry] = entries;
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
   });
 };
-
-const observer = new IntersectionObserver(obsCallBack, obsOptions);
-observer.observe(section1);
+const imgObserver = new IntersectionObserver(loadingImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+imageTargets.forEach(img => {
+  imgObserver.observe(img);
+});
 //SELECTING ELEMENTS
 // const section = document.querySelector('.section');
 // // const allSections = document.querySelectorAll(".section")
