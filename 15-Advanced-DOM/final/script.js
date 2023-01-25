@@ -8,6 +8,10 @@ const nav = document.querySelector('nav');
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
 const imageTargets = document.querySelectorAll('img[data-src]');
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const btnRight = document.querySelector('.slider__btn--right');
+const btnLeft = document.querySelector('.slider__btn--left');
 ///////////////////////////////////////
 // Modal window
 const openModal = function () {
@@ -125,7 +129,6 @@ headerObserver.observe(header);
 //IMPLEMENTING REVEALING SECTIONS
 const obsFn = function (entries, obsOpt) {
   const [entry] = entries;
-  console.log(entry);
   if (entry.isIntersecting) {
     entry.target.classList.remove('section--hidden');
   }
@@ -156,6 +159,35 @@ const imgObserver = new IntersectionObserver(loadingImg, {
 imageTargets.forEach(img => {
   imgObserver.observe(img);
 });
+//SLIDER
+let currentSlide = 0;
+const maxSlides = slides.length;
+
+slides.forEach((slide, i) => {
+  slide.style.transform = `translateX(${100 * i}%)`;
+});
+slider.style.overflow = 'hidden';
+btnRight.addEventListener('click', function () {
+  if (currentSlide === maxSlides - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${100 * (i - currentSlide)}%)`;
+  });
+});
+btnLeft.addEventListener("click", function(){
+  if (currentSlide === 0) {
+    currentSlide = maxSlides - 1;
+  } else {
+    currentSlide--;
+  }
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${100 * (i - currentSlide)}%)`;
+  });
+})
+
 //SELECTING ELEMENTS
 // const section = document.querySelector('.section');
 // // const allSections = document.querySelectorAll(".section")
