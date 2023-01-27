@@ -10,18 +10,8 @@ const countriesContainer = document.querySelector('.countries');
 // btn.addEventListener("click", function(){
 
 // })
-const getCountry = function (country) {
-  const request = new XMLHttpRequest();
-  request.open(
-    'GET',
-    `https://restcountries.com/v2/name/${country}?fullText=true`
-  );
-  request.send();
-
-  request.addEventListener('load', function () {
-    const [info] = JSON.parse(this.responseText);
-    console.log(info)
-    const htmlText = `<article class="country">
+const renderCountry = function (info, className = '') {
+  const htmlText = `<article class="country, ${className}">
   <img class="country__img" src="${info.flag}" />
   <div class="country__data">
     <h3 class="country__name">${info.name}</h3>
@@ -33,10 +23,49 @@ const getCountry = function (country) {
     <p class="country__row"><span>💰</span>${info.currencies[0].name}</p>
   </div>
 </article>`;
-    countriesContainer.insertAdjacentHTML('beforeend', htmlText);
-    countriesContainer.style.opacity = 1;
+  countriesContainer.insertAdjacentHTML('beforeend', htmlText);
+  countriesContainer.style.opacity = 1;
+};
+const getCountry = function (country) {
+  const request = new XMLHttpRequest();
+  request.open(
+    'GET',
+    `https://restcountries.com/v2/name/${country}?fullText=true`
+  );
+  request.send();
+  request.addEventListener('load', function () {
+    const [info] = JSON.parse(this.responseText);
+    console.log(info);
+    renderCountry(info);
+
+    //NEIGHBOURING COUNTRY
+    const [neighbor] = info.borders;
+    console.log(neighbor);
+    const request2 = new XMLHttpRequest();
+    request2.open(
+      'GET',
+      `https://restcountries.com/v2/alpha?codes=${neighbor}`
+    );
+    request2.send();
+    request2.addEventListener('load', function () {
+      const [info2] = JSON.parse(this.responseText);
+      console.log(info2.borders);
+      renderCountry(info2, 'neighbour');
+      const [neighbour3] = info2.borders;
+      //NEIGHBOURING COUNTRY 3
+      const request3 = new XMLHttpRequest();
+      request3.open(
+        'GET',
+        `https://restcountries.com/v2/alpha?codes=${neighbour3}`
+      );
+      request3.send();
+      request3.addEventListener('load', function () {
+        const [info3] = JSON.parse(this.responseText);
+        console.log(info3);
+        renderCountry(info3, 'neighbour');
+      });
+    });
   });
 };
+getCountry('Togo');
 
-getCountry('Nigeria');
-getCountry('usa');
